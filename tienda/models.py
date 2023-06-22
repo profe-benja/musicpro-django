@@ -21,6 +21,7 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=100)
     precio = models.FloatField()
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    foto = models.ImageField(upload_to='productos', null=True, blank=True)
     
 class Cliente(models.Model):
     nombre = models.CharField(max_length=100)
@@ -33,6 +34,7 @@ class Cliente(models.Model):
 class Boleta(models.Model):
     fecha = models.DateField()
     total = models.FloatField()
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     
 class DetalleBoleta(models.Model):
     cantidad = models.IntegerField()
